@@ -1,0 +1,257 @@
+[
+  {
+    "id": "1",
+    "slug": "baby-bottle-brush-set",
+    "name": "4-in-1 Baby Sipper Bottle Cleaning Brush Set",
+    "price": 199,
+    "mrp": 399,
+    "image": "/products/baby-bottle-brush-set.jpeg",
+    "category": "Baby Care",
+    "badge": "Best Seller",
+    "features": [
+      "Safe & Non-Toxic — Made with BPA-free materials",
+      "Deep Cleaning — Reaches every corner for perfect hygiene",
+      "Soft & Durable — Gentle on bottles, tough on stains",
+      "Easy to Use — Ergonomic design for better grip & cleaning"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "2",
+    "slug": "transparent-book-cover",
+    "name": "Self-Adhesive Transparent Book Cover (Pack of 10)",
+    "price": 99,
+    "mrp": 199,
+    "image": "/products/transparent-book-cover.jpeg",
+    "category": "Stationery",
+    "badge": "Value Pack",
+    "features": [
+      "Crystal Clear — Keeps book titles and artwork fully visible",
+      "Self-Adhesive — Easy peel and stick, no scissors or tape needed",
+      "Waterproof & Durable — Protects books from moisture and wear",
+      "Adjustable Size — Fits most textbooks and school notebooks"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "3",
+    "slug": "elastic-clothesline",
+    "name": "Portable Elastic Clothesline with 12 Clips",
+    "price": 149,
+    "mrp": 299,
+    "image": "/products/elastic-clothesline.jpeg",
+    "category": "Home Finds",
+    "badge": null,
+    "features": [
+      "Windproof Clips — 12 strong clips hold clothes securely",
+      "Elastic & Retractable — Stretches up to 3.6 metres length",
+      "Travel-Friendly — Compact, lightweight, easy to carry anywhere",
+      "Multi-Use — Perfect for balcony, hotel room, or camping"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "4",
+    "slug": "solar-levitating-ball",
+    "name": "Solar-Powered Levitating Spinning Ball Desk Toy",
+    "price": 199,
+    "mrp": 499,
+    "image": "/products/solar-levitating-ball.jpeg",
+    "category": "Home Finds",
+    "badge": "Trending",
+    "features": [
+      "No Batteries Needed — Powered entirely by sunlight or room light",
+      "Mesmerising Motion — Chrome ball spins and levitates continuously",
+      "Premium Desk Decor — Sleek black base with polished chrome ball",
+      "Perfect Gift — Unique conversation starter for any desk or shelf"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "5",
+    "slug": "ceramic-vase-magnets",
+    "name": "Ceramic Mini Vase Fridge Magnets (Set of 8)",
+    "price": 199,
+    "mrp": 399,
+    "image": "/products/ceramic-vase-magnets.jpeg",
+    "category": "Home Finds",
+    "badge": "Cute Decor",
+    "features": [
+      "Set of 8 Unique Designs — Each vase is a different shape and colour",
+      "Strong Magnets — Sticks firmly to fridge, whiteboard, or any metal surface",
+      "Holds Real Flowers — Fill with water and add tiny fresh or dried flowers",
+      "Adorable Gift — Perfect for home decor lovers and gifting occasions"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "6",
+    "slug": "vacuum-storage-bags",
+    "name": "Vacuum Storage Bags 5-Pack with Hand Pump",
+    "price": 199,
+    "mrp": 499,
+    "image": "/products/vacuum-storage-bags.jpeg",
+    "category": "Home Finds",
+    "badge": "Save 80% Space",
+    "features": [
+      "80% Space Saving — Compress clothes, quilts, and blankets flat",
+      "5-Pack with Pump — Includes 5 bags and 1 hand vacuum pump",
+      "Double-Zip Lock Seal — Airtight, keeps moisture and bugs out",
+      "Reusable & Washable — Use again and again, eco-friendly choice"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "7",
+    "slug": "glow-dark-stars",
+    "name": "Glow in the Dark Stars & Moon Ceiling Stickers",
+    "price": 99,
+    "mrp": 199,
+    "image": "/products/glow-dark-stars.jpeg",
+    "category": "Home Finds",
+    "badge": "Kids Love It",
+    "features": [
+      "Glow All Night — Charges with any light source, glows beautifully in the dark",
+      "Large Set — Includes moon, stars, and shooting star shapes",
+      "Easy Peel & Stick — Fully removable, no damage to walls or ceiling",
+      "Safe for Kids — Non-toxic materials, safe for children's bedrooms"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "8",
+    "slug": "solar-buddha-bobblehead",
+    "name": "Solar-Powered Nodding Buddha Bobblehead",
+    "price": 199,
+    "mrp": 399,
+    "image": "/products/solar-buddha-bobblehead.jpeg",
+    "category": "Home Finds",
+    "badge": "Good Vibes",
+    "features": [
+      "Solar Powered — Nods gently whenever sunlight or room light falls on it",
+      "No Batteries Required — Completely eco-friendly and hassle-free",
+      "Spreads Positivity — Brings good luck and positive energy to any space",
+      "Multi-Use — Perfect for car dashboard, office desk, or home altar"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "9",
+    "slug": "shinchan-keychain",
+    "name": "Shin-chan Face-Changing Character Keychain",
+    "price": 149,
+    "mrp": 299,
+    "image": "/products/shinchan-keychain.jpeg",
+    "category": "Home Finds",
+    "badge": "Trending",
+    "features": [
+      "Press & Spin — Push the button to instantly change Shin-chan's face",
+      "Premium Build — Durable ABS plastic with vibrant colours that last",
+      "Cute & Fun — Unique gift for anime and cartoon lovers of all ages",
+      "Keychain Ready — Durable metal ring and clip included"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "10",
+    "slug": "glass-squeegee",
+    "name": "Handheld Glass & Window Cleaning Squeegee",
+    "price": 149,
+    "mrp": 299,
+    "image": "/products/glass-squeegee.jpeg",
+    "category": "Home Finds",
+    "badge": null,
+    "features": [
+      "Strong Rubber Blade — Leaves glass completely streak-free every time",
+      "Ergonomic Anti-Slip Handle — Comfortable firm grip for easy cleaning",
+      "Multi-Surface Use — Works on glass, mirrors, tiles, and shower doors",
+      "Compact & Lightweight — Easy to store in any kitchen or bathroom"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "11",
+    "slug": "jhumki-organizer",
+    "name": "Jhumki Earring Organizer Display Box (16 Pairs)",
+    "price": 199,
+    "mrp": 399,
+    "image": "/products/jhumki-organizer.jpeg",
+    "category": "Home Finds",
+    "badge": "Must Have",
+    "features": [
+      "Holds 16 Pairs — 4 rows with individual slots, keeps jhumkis tangle-free",
+      "Foldable Design — Easy to fold flat for travel or store in a drawer",
+      "Premium Velvet Lining — Soft cushion keeps jewellery scratch-free",
+      "Perfect Gift — Ideal for jhumki and Indian traditional jewellery lovers"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "12",
+    "slug": "mini-bag-sealer",
+    "name": "2-in-1 Mini Bag Sealer & Cutter (USB-C Rechargeable)",
+    "price": 199,
+    "mrp": 399,
+    "image": "/products/mini-bag-sealer.jpeg",
+    "category": "Home Finds",
+    "badge": "Smart Kitchen",
+    "features": [
+      "2-in-1 Function — Seals AND cuts plastic bags in one smooth swipe",
+      "USB-C Rechargeable — No disposable batteries, charges like your phone",
+      "Keeps Food Fresh — Reseal chips, snacks, and food packets easily",
+      "Compact & Portable — Pocket-sized, fits in any kitchen drawer"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "13",
+    "slug": "plasma-arc-lighter",
+    "name": "Flexible Neck Plasma Arc Lighter (USB-C Rechargeable)",
+    "price": 199,
+    "mrp": 499,
+    "image": "/products/plasma-arc-lighter.jpeg",
+    "category": "Home Finds",
+    "badge": "Eco Lighter",
+    "features": [
+      "Windproof Plasma Arc — Works perfectly in rain, wind, and outdoors",
+      "Flexible Gooseneck — Bend and reach candles, gas stoves, and incense easily",
+      "USB-C Rechargeable — No gas or refills needed, charges like your phone",
+      "Safety Lock — Child-safe button lock for secure storage"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "14",
+    "slug": "window-mosquito-net",
+    "name": "Self-Adhesive Window Mosquito Net (Pre-Stitched)",
+    "price": 199,
+    "mrp": 399,
+    "image": "/products/window-mosquito-net.jpeg",
+    "category": "Home Finds",
+    "badge": "Mosquito-Free",
+    "features": [
+      "Pre-Stitched & Ready to Use — No tools, drilling, or frames required",
+      "Velcro Adhesive Fix — Sticks to any window frame in under 5 minutes",
+      "Fine Mesh — Keeps mosquitoes, flies, and all insects completely out",
+      "Washable & Reusable — Remove, clean, and reattach whenever needed"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "15",
+    "slug": "magnetic-door-mosquito-net",
+    "name": "Magnetic Auto-Close Door Mosquito Net (210×100 cm)",
+    "price": 199,
+    "mrp": 499,
+    "image": "/products/magnetic-door-mosquito-net.jpeg",
+    "category": "Home Finds",
+    "badge": "Top Pick",
+    "features": [
+      "Auto Self-Closing — Strong magnets snap shut automatically after you pass",
+      "Full Door Coverage — 210×100 cm size fits all standard Indian doors",
+      "Easy Installation — Full adhesive hook & loop tape frame, zero drilling",
+      "Hands-Free Entry — Walk through freely while mosquitoes stay completely out"
+    ],
+    "inStock": true
+  }
+]
