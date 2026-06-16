@@ -252,7 +252,7 @@ function CheckoutForm() {
               if (Object.keys(errs).length) { setErrors(errs); return }
               router.push(`/order-success?product=${encodeURIComponent(product.name)}&amount=${total}&payment=cod`)
             }}
-            className="w-full bg-white border-2 border-brand-dark text-brand-dark font-bold text-base py-4 rounded-xl active:scale-95 transition-transform disabled:opacity-70 disabled:cursor-not-allowed"
+            className="w-full bg-white border-2 border-brand-orange text-brand-orange font-bold text-base py-4 rounded-xl active:scale-95 transition-transform disabled:opacity-70 disabled:cursor-not-allowed"
           >
             Cash on Delivery (COD)
           </button>
