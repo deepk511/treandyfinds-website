@@ -95,7 +95,7 @@ function CheckoutForm() {
           address: `${form.address}, ${form.city} - ${form.pincode}`,
         },
         theme: { color: '#FF6B35' },
-        handler: function (response) {
+        handler: function () {
           router.push(
             `/order-success?product=${encodeURIComponent(product.name)}&amount=${product.price}`
           )
@@ -234,11 +234,24 @@ function CheckoutForm() {
             disabled={loading}
             className="w-full bg-brand-orange text-white font-bold text-base py-4 rounded-xl shadow-md active:scale-95 transition-transform disabled:opacity-70 disabled:cursor-not-allowed mt-2"
           >
-            {loading ? 'Opening Payment...' : `Proceed to Pay — ₹${product.price}`}
+            {loading ? 'Opening Payment...' : `Pay Online — ₹${product.price}`}
+          </button>
+
+          <button
+            type="button"
+            disabled={loading}
+            onClick={() => {
+              const errs = validate()
+              if (Object.keys(errs).length) { setErrors(errs); return }
+              router.push(`/order-success?product=${encodeURIComponent(product.name)}&amount=${product.price}&payment=cod`)
+            }}
+            className="w-full bg-white border-2 border-brand-dark text-brand-dark font-bold text-base py-4 rounded-xl active:scale-95 transition-transform disabled:opacity-70 disabled:cursor-not-allowed"
+          >
+            Cash on Delivery (COD)
           </button>
 
           <p className="text-center text-xs text-brand-gray">
-            🔒 Secure checkout powered by Razorpay
+            🔒 Online payments secured by Razorpay &nbsp;|&nbsp; COD available across India
           </p>
         </form>
       </main>
