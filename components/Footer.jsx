@@ -29,8 +29,16 @@ export default function Footer() {
         {/* Divider */}
         <div className="border-t border-white/10 my-6" />
 
+        {/* Policy links */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6 text-sm">
+          <Link href="/about" className="text-white/60 hover:text-white transition-colors">About Us</Link>
+          <Link href="/return-policy" className="text-white/60 hover:text-white transition-colors">Return & Refund</Link>
+          <Link href="/shipping-policy" className="text-white/60 hover:text-white transition-colors">Shipping Policy</Link>
+          <a href="mailto:emmanecomconsultant@gmail.com" className="text-white/60 hover:text-white transition-colors">Contact Us</a>
+        </div>
+
         {/* Bottom row */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-sm text-white/50">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-sm text-white/40">
           <p>
             © 2025 Treandyfinds India. All rights reserved. |{' '}
             Developed by{' '}
@@ -43,14 +51,7 @@ export default function Footer() {
               D2Grow Agency
             </a>
           </p>
-          <div className="flex gap-4">
-            <Link href="/privacy-policy" className="hover:text-white transition-colors">
-              Privacy Policy
-            </Link>
-            <a href="mailto:emmanecomconsultant@gmail.com" className="hover:text-white transition-colors">
-              Contact Us
-            </a>
-          </div>
+          <Link href="/privacy-policy" className="hover:text-white/60 transition-colors">Privacy Policy</Link>
         </div>
       </div>
     </footer>

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { useCart } from '@/context/CartContext'
 import products from '@/data/products.json'
 
 function loadRazorpay() {
@@ -21,10 +22,18 @@ function loadRazorpay() {
 function CheckoutForm() {
   const searchParams = useSearchParams()
   const router = useRouter()
+  const { cart, totalAmount, clearCart } = useCart()
+
   const slug = searchParams.get('slug')
   const qty = Math.max(1, parseInt(searchParams.get('qty') || '1', 10))
-  const product = products.find((p) => p.slug === slug)
-  const total = product ? product.price * qty : 0
+
+  // Determine mode: single product (Buy Now) vs cart
+  const isCartMode = !slug
+  const product = slug ? products.find((p) => p.slug === slug) : null
+  const total = isCartMode ? totalAmount : (product ? product.price * qty : 0)
+  const orderDescription = isCartMode
+    ? `${cart.length} item${cart.length !== 1 ? 's' : ''} from Treandyfinds India`
+    : (product ? product.name : '')
 
   const [form, setForm] = useState({
     name: '', phone: '', email: '', address: '', city: '', pincode: '',
@@ -33,10 +42,12 @@ function CheckoutForm() {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    if (!product) router.replace('/')
-  }, [product, router])
+    if (!isCartMode && !product) router.replace('/')
+    if (isCartMode && cart.length === 0) router.replace('/cart')
+  }, [product, isCartMode, cart, router])
 
-  if (!product) return null
+  if (!isCartMode && !product) return null
+  if (isCartMode && cart.length === 0) return null
 
   function validate() {
     const e = {}
@@ -61,13 +72,12 @@ function CheckoutForm() {
     setLoading(true)
 
     try {
-      // 1. Create order on server
       const res = await fetch('/api/razorpay', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           amount: total,
-          productName: product.name,
+          productName: orderDescription,
           customerName: form.name,
           customerPhone: form.phone,
           customerEmail: form.email,
@@ -76,17 +86,15 @@ function CheckoutForm() {
       const data = await res.json()
       if (!data.orderId) throw new Error('Order creation failed')
 
-      // 2. Load Razorpay script
       const loaded = await loadRazorpay()
       if (!loaded) throw new Error('Razorpay failed to load')
 
-      // 3. Open Razorpay checkout
       const options = {
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
         amount: data.amount,
         currency: 'INR',
         name: 'Treandyfinds India',
-        description: product.name,
+        description: orderDescription,
         order_id: data.orderId,
         prefill: {
           name: form.name,
@@ -98,8 +106,9 @@ function CheckoutForm() {
         },
         theme: { color: '#FF6B35' },
         handler: function () {
+          if (isCartMode) clearCart()
           router.push(
-            `/order-success?product=${encodeURIComponent(product.name)}&amount=${total}`
+            `/order-success?product=${encodeURIComponent(orderDescription)}&amount=${total}`
           )
         },
         modal: {
@@ -118,38 +127,69 @@ function CheckoutForm() {
     }
   }
 
+  function handleCOD() {
+    const errs = validate()
+    if (Object.keys(errs).length) { setErrors(errs); return }
+    if (isCartMode) clearCart()
+    router.push(`/order-success?product=${encodeURIComponent(orderDescription)}&amount=${total}&payment=cod`)
+  }
+
   return (
     <>
       <Navbar />
       <main className="max-w-lg mx-auto px-4 py-8">
         {/* Back */}
-        <Link href={`/products/${product.slug}`} className="inline-flex items-center gap-1 text-sm text-brand-gray mb-5 hover:text-brand-orange transition-colors">
+        <Link
+          href={isCartMode ? '/cart' : `/products/${product.slug}`}
+          className="inline-flex items-center gap-1 text-sm text-brand-gray mb-5 hover:text-brand-orange transition-colors"
+        >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
-          Back to Product
+          {isCartMode ? 'Back to Cart' : 'Back to Product'}
         </Link>
 
         <h1 className="text-2xl font-bold text-brand-dark mb-6">Checkout</h1>
 
         {/* Order summary */}
-        <div className="bg-brand-cream rounded-xl p-4 flex items-center gap-3 mb-6 border border-brand-border">
-          <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-            <Image src={product.image} alt={product.name} fill className="object-cover" />
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-brand-dark leading-snug line-clamp-2">{product.name}</p>
-            <div className="flex items-center gap-2 mt-1">
-              <span className="text-base font-bold text-brand-orange">₹{product.price}</span>
-              <span className="text-xs text-brand-gray line-through">₹{product.mrp}</span>
+        {isCartMode ? (
+          <div className="bg-brand-cream rounded-xl p-4 mb-6 border border-brand-border">
+            <p className="text-sm font-bold text-brand-dark mb-3">Order Summary ({cart.length} items)</p>
+            <div className="space-y-2 mb-3">
+              {cart.map((item) => (
+                <div key={item.slug} className="flex items-center gap-3">
+                  <div className="relative w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-gray-50">
+                    <Image src={item.image} alt={item.name} fill className="object-cover" />
+                  </div>
+                  <p className="text-xs text-brand-dark flex-1 line-clamp-1">{item.name}</p>
+                  <p className="text-xs font-bold text-brand-orange whitespace-nowrap">₹{item.price} × {item.qty}</p>
+                </div>
+              ))}
             </div>
-            {qty > 1 && (
-              <p className="text-xs text-brand-gray mt-1">
-                Qty: {qty} × ₹{product.price} = <span className="font-bold text-brand-orange">₹{total}</span>
-              </p>
-            )}
+            <div className="border-t border-brand-border pt-2 flex justify-between">
+              <span className="text-sm font-bold text-brand-dark">Total</span>
+              <span className="text-base font-bold text-brand-orange">₹{total}</span>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="bg-brand-cream rounded-xl p-4 flex items-center gap-3 mb-6 border border-brand-border">
+            <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+              <Image src={product.image} alt={product.name} fill className="object-cover" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-semibold text-brand-dark leading-snug line-clamp-2">{product.name}</p>
+              <div className="flex items-center gap-2 mt-1">
+                <span className="text-base font-bold text-brand-orange">₹{product.price}</span>
+                <span className="text-xs text-brand-gray line-through">₹{product.mrp}</span>
+              </div>
+              {qty > 1 && (
+                <p className="text-xs text-brand-gray mt-1">
+                  Qty: {qty} × ₹{product.price} = <span className="font-bold text-brand-orange">₹{total}</span>
+                </p>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4" noValidate>
@@ -247,11 +287,7 @@ function CheckoutForm() {
           <button
             type="button"
             disabled={loading}
-            onClick={() => {
-              const errs = validate()
-              if (Object.keys(errs).length) { setErrors(errs); return }
-              router.push(`/order-success?product=${encodeURIComponent(product.name)}&amount=${total}&payment=cod`)
-            }}
+            onClick={handleCOD}
             className="w-full bg-white border-2 border-brand-orange text-brand-orange font-bold text-base py-4 rounded-xl active:scale-95 transition-transform disabled:opacity-70 disabled:cursor-not-allowed"
           >
             Cash on Delivery (COD)
