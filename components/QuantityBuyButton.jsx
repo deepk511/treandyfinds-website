@@ -36,15 +36,6 @@ export default function QuantityBuyButton({ product }) {
         Buy Now — ₹{total}
       </Link>
 
-      {/* WhatsApp */}
-      <a
-        href={`https://wa.me/919940103738?text=Hi! I want to order ${qty} x ${encodeURIComponent(product.name)} (₹${total} total)`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="w-full text-center border-2 border-[#25D366] text-[#25D366] font-semibold py-3.5 rounded-xl active:scale-95 transition-transform text-sm"
-      >
-        Ask on WhatsApp
-      </a>
     </div>
   )
 }

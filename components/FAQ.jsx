@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: 'How do I contact you for support?',
-    a: 'The fastest way to reach us is via WhatsApp at +91 99401 03738. You can also email us at emmanecomconsultant@gmail.com. We typically respond within a few hours.',
+    a: 'You can email us at emmanecomconsultant@gmail.com. We typically respond within a few hours.',
   },
 ]
 
