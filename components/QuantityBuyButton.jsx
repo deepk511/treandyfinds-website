@@ -25,11 +25,6 @@ export default function QuantityBuyButton({ product }) {
           >
             +
           </button>
-          {qty > 1 && (
-            <span className="text-sm text-brand-gray ml-2">
-              ₹{product.price} × {qty} = <span className="font-bold text-brand-orange">₹{total}</span>
-            </span>
-          )}
         </div>
       </div>
 
