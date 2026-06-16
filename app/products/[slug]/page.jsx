@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import QuantityBuyButton from '@/components/QuantityBuyButton'
 import products from '@/data/products.json'
 import reviews from '@/data/reviews.json'
 
@@ -133,23 +133,7 @@ export default function ProductPage({ params }) {
               </div>
             </div>
 
-            {/* Buy Now */}
-            <Link
-              href={`/checkout?slug=${product.slug}`}
-              className="w-full text-center bg-brand-orange text-white text-base font-bold py-4 rounded-xl shadow-md active:scale-95 transition-transform"
-            >
-              Buy Now — ₹{product.price}
-            </Link>
-
-            {/* WhatsApp query */}
-            <a
-              href={`https://wa.me/919940103738?text=Hi! I'm interested in: ${encodeURIComponent(product.name)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full text-center border-2 border-[#25D366] text-[#25D366] font-semibold py-3.5 rounded-xl active:scale-95 transition-transform text-sm"
-            >
-              Ask on WhatsApp
-            </a>
+            <QuantityBuyButton product={product} />
           </div>
         </div>
 

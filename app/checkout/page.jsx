@@ -22,7 +22,9 @@ function CheckoutForm() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const slug = searchParams.get('slug')
+  const qty = Math.max(1, parseInt(searchParams.get('qty') || '1', 10))
   const product = products.find((p) => p.slug === slug)
+  const total = product ? product.price * qty : 0
 
   const [form, setForm] = useState({
     name: '', phone: '', email: '', address: '', city: '', pincode: '',
@@ -64,7 +66,7 @@ function CheckoutForm() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          amount: product.price,
+          amount: total,
           productName: product.name,
           customerName: form.name,
           customerPhone: form.phone,
@@ -97,7 +99,7 @@ function CheckoutForm() {
         theme: { color: '#FF6B35' },
         handler: function () {
           router.push(
-            `/order-success?product=${encodeURIComponent(product.name)}&amount=${product.price}`
+            `/order-success?product=${encodeURIComponent(product.name)}&amount=${total}`
           )
         },
         modal: {
@@ -141,6 +143,11 @@ function CheckoutForm() {
               <span className="text-base font-bold text-brand-orange">₹{product.price}</span>
               <span className="text-xs text-brand-gray line-through">₹{product.mrp}</span>
             </div>
+            {qty > 1 && (
+              <p className="text-xs text-brand-gray mt-1">
+                Qty: {qty} × ₹{product.price} = <span className="font-bold text-brand-orange">₹{total}</span>
+              </p>
+            )}
           </div>
         </div>
 
@@ -234,7 +241,7 @@ function CheckoutForm() {
             disabled={loading}
             className="w-full bg-brand-orange text-white font-bold text-base py-4 rounded-xl shadow-md active:scale-95 transition-transform disabled:opacity-70 disabled:cursor-not-allowed mt-2"
           >
-            {loading ? 'Opening Payment...' : `Pay Online — ₹${product.price}`}
+            {loading ? 'Opening Payment...' : `Pay Online — ₹${total}`}
           </button>
 
           <button
@@ -243,7 +250,7 @@ function CheckoutForm() {
             onClick={() => {
               const errs = validate()
               if (Object.keys(errs).length) { setErrors(errs); return }
-              router.push(`/order-success?product=${encodeURIComponent(product.name)}&amount=${product.price}&payment=cod`)
+              router.push(`/order-success?product=${encodeURIComponent(product.name)}&amount=${total}&payment=cod`)
             }}
             className="w-full bg-white border-2 border-brand-dark text-brand-dark font-bold text-base py-4 rounded-xl active:scale-95 transition-transform disabled:opacity-70 disabled:cursor-not-allowed"
           >
