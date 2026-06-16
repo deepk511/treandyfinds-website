@@ -7,6 +7,17 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import products from '@/data/products.json'
 
+function loadRazorpay() {
+  return new Promise((resolve) => {
+    if (window.Razorpay) { resolve(true); return }
+    const script = document.createElement('script')
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js'
+    script.onload = () => resolve(true)
+    script.onerror = () => resolve(false)
+    document.body.appendChild(script)
+  })
+}
+
 function CheckoutForm() {
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -46,11 +57,63 @@ function CheckoutForm() {
     const errs = validate()
     if (Object.keys(errs).length) { setErrors(errs); return }
     setLoading(true)
-    // Razorpay integration goes here (Day 2)
-    // For now, simulate success
-    setTimeout(() => {
-      router.push(`/order-success?product=${encodeURIComponent(product.name)}&amount=${product.price}`)
-    }, 1000)
+
+    try {
+      // 1. Create order on server
+      const res = await fetch('/api/razorpay', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          amount: product.price,
+          productName: product.name,
+          customerName: form.name,
+          customerPhone: form.phone,
+          customerEmail: form.email,
+        }),
+      })
+      const data = await res.json()
+      if (!data.orderId) throw new Error('Order creation failed')
+
+      // 2. Load Razorpay script
+      const loaded = await loadRazorpay()
+      if (!loaded) throw new Error('Razorpay failed to load')
+
+      // 3. Open Razorpay checkout
+      const options = {
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+        amount: data.amount,
+        currency: 'INR',
+        name: 'Treandyfinds India',
+        description: product.name,
+        order_id: data.orderId,
+        prefill: {
+          name: form.name,
+          email: form.email,
+          contact: form.phone,
+        },
+        notes: {
+          address: `${form.address}, ${form.city} - ${form.pincode}`,
+        },
+        theme: { color: '#FF6B35' },
+        handler: function (response) {
+          router.push(
+            `/order-success?product=${encodeURIComponent(product.name)}&amount=${product.price}`
+          )
+        },
+        modal: {
+          ondismiss: function () {
+            setLoading(false)
+          },
+        },
+      }
+
+      const rzp = new window.Razorpay(options)
+      rzp.open()
+    } catch (err) {
+      console.error(err)
+      alert('Payment failed to start. Please try again.')
+      setLoading(false)
+    }
   }
 
   return (
@@ -85,7 +148,6 @@ function CheckoutForm() {
         <form onSubmit={handleSubmit} className="space-y-4" noValidate>
           <h2 className="text-base font-bold text-brand-dark">Delivery Details</h2>
 
-          {/* Full Name */}
           <div>
             <label className="block text-sm font-semibold text-brand-dark mb-1">Full Name *</label>
             <input
@@ -99,7 +161,6 @@ function CheckoutForm() {
             {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
           </div>
 
-          {/* Phone */}
           <div>
             <label className="block text-sm font-semibold text-brand-dark mb-1">Mobile Number *</label>
             <input
@@ -114,7 +175,6 @@ function CheckoutForm() {
             {errors.phone && <p className="text-xs text-red-500 mt-1">{errors.phone}</p>}
           </div>
 
-          {/* Email */}
           <div>
             <label className="block text-sm font-semibold text-brand-dark mb-1">Email Address *</label>
             <input
@@ -128,7 +188,6 @@ function CheckoutForm() {
             {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
           </div>
 
-          {/* Address */}
           <div>
             <label className="block text-sm font-semibold text-brand-dark mb-1">Delivery Address *</label>
             <textarea
@@ -142,7 +201,6 @@ function CheckoutForm() {
             {errors.address && <p className="text-xs text-red-500 mt-1">{errors.address}</p>}
           </div>
 
-          {/* City + Pincode */}
           <div className="flex gap-3">
             <div className="flex-1">
               <label className="block text-sm font-semibold text-brand-dark mb-1">City *</label>
@@ -171,13 +229,12 @@ function CheckoutForm() {
             </div>
           </div>
 
-          {/* Pay button */}
           <button
             type="submit"
             disabled={loading}
             className="w-full bg-brand-orange text-white font-bold text-base py-4 rounded-xl shadow-md active:scale-95 transition-transform disabled:opacity-70 disabled:cursor-not-allowed mt-2"
           >
-            {loading ? 'Processing...' : `Proceed to Pay — ₹${product.price}`}
+            {loading ? 'Opening Payment...' : `Proceed to Pay — ₹${product.price}`}
           </button>
 
           <p className="text-center text-xs text-brand-gray">
