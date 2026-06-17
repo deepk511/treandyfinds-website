@@ -1,4 +1,5 @@
 import { Inter } from 'next/font/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import './globals.css'
 import { CartProvider } from '@/context/CartContext'
 
@@ -39,6 +40,7 @@ export default function RootLayout({ children }) {
           </svg>
         </a>
       </body>
+      <GoogleAnalytics gaId="G-5NZB42EVF3" />
     </html>
   )
 }
