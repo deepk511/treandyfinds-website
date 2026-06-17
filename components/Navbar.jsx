@@ -22,7 +22,7 @@ export default function Navbar() {
 
         {/* Desktop tagline */}
         <p className="hidden md:block text-sm text-brand-gray">
-          Trendy finds under <span className="font-bold text-brand-orange">₹200</span>
+          Trendy finds for your family
         </p>
 
 
@@ -60,7 +60,7 @@ export default function Navbar() {
       {open && (
         <div className="md:hidden bg-white border-t border-brand-border px-4 py-4 space-y-3">
           <p className="text-sm text-brand-gray">
-            Trendy finds under <span className="font-bold text-brand-orange">₹200</span>
+            Trendy finds for your family
           </p>
         </div>
       )}

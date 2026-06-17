@@ -15,8 +15,7 @@ export default function HeroBanner() {
 
         {/* Subtext */}
         <p className="text-base md:text-lg text-brand-gray mb-6 max-w-md mx-auto">
-          Premium baby &amp; home products — all under{' '}
-          <span className="font-bold text-brand-green">₹200</span>
+          Premium baby &amp; home products you can trust
         </p>
 
         {/* CTA */}

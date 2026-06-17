@@ -12,7 +12,7 @@ export default function Footer() {
               <span className="text-xl font-bold text-brand-orange">Treandyfinds</span>
               <span className="text-xs font-semibold text-brand-green bg-white/10 px-1.5 py-0.5 rounded">India</span>
             </div>
-            <p className="text-sm text-white/60">Trendy finds for your family — under ₹200</p>
+            <p className="text-sm text-white/60">Trendy finds for your family</p>
           </div>
 
           <a

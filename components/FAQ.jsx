@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     q: 'Are the products genuine and good quality?',
-    a: 'Absolutely! All products are quality-checked before shipping. We carefully select every product to ensure it is useful, durable, and worth your money — all under ₹200.',
+    a: 'Absolutely! All products are quality-checked before shipping. We carefully select every product to ensure it is useful, durable, and worth your money.',
   },
   {
     q: 'How do I contact you for support?',

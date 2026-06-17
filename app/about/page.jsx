@@ -3,7 +3,7 @@ import Footer from '@/components/Footer'
 
 export const metadata = {
   title: 'About Us — Treandyfinds India',
-  description: 'Learn about Treandyfinds India — your trusted source for trendy finds under ₹200, delivering across India from Chennai.',
+  description: 'Learn about Treandyfinds India — your trusted source for trendy finds, delivering across India from Chennai.',
 }
 
 export default function AboutPage() {
@@ -12,7 +12,7 @@ export default function AboutPage() {
       <Navbar />
       <main className="max-w-2xl mx-auto px-4 py-10">
         <h1 className="text-3xl font-bold text-brand-dark mb-2">About Us</h1>
-        <p className="text-brand-orange font-semibold mb-8">Trendy Finds for Every Indian Family — Under ₹200</p>
+        <p className="text-brand-orange font-semibold mb-8">Trendy Finds for Every Indian Family</p>
 
         <section className="bg-brand-cream rounded-2xl p-6 mb-6 border border-brand-border">
           <h2 className="text-lg font-bold text-brand-dark mb-3">Who We Are</h2>
@@ -23,8 +23,8 @@ export default function AboutPage() {
             deliver real value without breaking your budget.
           </p>
           <p className="text-sm text-brand-gray leading-relaxed mt-3">
-            We believe great products shouldn&apos;t cost a fortune. That&apos;s why everything on Treandyfinds India
-            is priced under ₹200 — making it easy for every family across India to access the things they
+            We believe great products shouldn&apos;t cost a fortune. That&apos;s why we keep our prices honest
+            and affordable — making it easy for every family across India to access the things they
             need and love.
           </p>
         </section>
@@ -91,8 +91,8 @@ export default function AboutPage() {
               <p className="text-xs text-brand-gray mt-0.5">Delivery</p>
             </div>
             <div className="bg-brand-cream rounded-xl p-3">
-              <p className="text-xl font-bold text-brand-orange">₹200</p>
-              <p className="text-xs text-brand-gray mt-0.5">Max Price</p>
+              <p className="text-xl font-bold text-brand-orange">100%</p>
+              <p className="text-xs text-brand-gray mt-0.5">Genuine</p>
             </div>
           </div>
         </section>

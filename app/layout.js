@@ -10,12 +10,12 @@ const inter = Inter({
 })
 
 export const metadata = {
-  title: 'Treandyfinds India — Trendy Finds Under ₹200',
-  description: 'Premium baby care, home essentials & trendy finds — all under ₹200. Fast delivery across India. Shop now at Treandyfinds India.',
-  keywords: 'baby products, home essentials, trendy finds, under 200, Chennai, India',
+  title: 'Treandyfinds India — Trendy Finds for Every Home',
+  description: 'Premium baby care, home essentials & trendy finds — quality you can trust. Fast delivery across India. Shop now at Treandyfinds India.',
+  keywords: 'baby products, home essentials, trendy finds, Chennai, India',
   openGraph: {
-    title: 'Treandyfinds India — Trendy Finds Under ₹200',
-    description: 'Premium baby care, home essentials & trendy finds — all under ₹200.',
+    title: 'Treandyfinds India — Trendy Finds for Every Home',
+    description: 'Premium baby care, home essentials & trendy finds — quality you can trust.',
     siteName: 'Treandyfinds India',
   },
 }
