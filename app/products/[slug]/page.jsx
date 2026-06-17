@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import QuantityBuyButton from '@/components/QuantityBuyButton'
 import ProductGallery from '@/components/ProductGallery'
+import { getProductImages } from '@/lib/productImages'
 import products from '@/data/products.json'
 import reviews from '@/data/reviews.json'
 
@@ -38,6 +39,7 @@ export default function ProductPage({ params }) {
 
   const discount = Math.round(((product.mrp - product.price) / product.mrp) * 100)
   const avgRating = (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1)
+  const images = getProductImages(product.slug, product.image)
 
   return (
     <>
@@ -54,7 +56,7 @@ export default function ProductPage({ params }) {
         <div className="flex flex-col md:flex-row gap-6 md:gap-10">
           {/* Image gallery */}
           <ProductGallery
-            images={product.images || [product.image]}
+            images={images}
             name={product.name}
             badge={product.badge}
           />
