@@ -6,6 +6,13 @@
     "price": 199,
     "mrp": 399,
     "image": "/products/baby-bottle-brush-set.jpeg",
+    "images": [
+      "/products/baby-bottle-brush-set.jpeg",
+      "/products/baby-bottle-brush-set-2.jpeg",
+      "/products/baby-bottle-brush-set-3.jpeg",
+      "/products/baby-bottle-brush-set-4.jpeg",
+      "/products/baby-bottle-brush-set-5.jpeg"
+    ],
     "category": "Baby Care",
     "badge": "Best Seller",
     "features": [

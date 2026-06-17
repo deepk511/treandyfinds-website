@@ -1,9 +1,9 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import QuantityBuyButton from '@/components/QuantityBuyButton'
+import ProductGallery from '@/components/ProductGallery'
 import products from '@/data/products.json'
 import reviews from '@/data/reviews.json'
 
@@ -52,24 +52,12 @@ export default function ProductPage({ params }) {
         </Link>
 
         <div className="flex flex-col md:flex-row gap-6 md:gap-10">
-          {/* Image */}
-          <div className="w-full md:w-1/2">
-            <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-50">
-              <Image
-                src={product.image}
-                alt={product.name}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
-                priority
-              />
-              {product.badge && (
-                <span className="absolute top-3 left-3 bg-brand-orange text-white text-xs font-bold px-3 py-1 rounded-full">
-                  {product.badge}
-                </span>
-              )}
-            </div>
-          </div>
+          {/* Image gallery */}
+          <ProductGallery
+            images={product.images || [product.image]}
+            name={product.name}
+            badge={product.badge}
+          />
 
           {/* Details */}
           <div className="w-full md:w-1/2 flex flex-col gap-4">
