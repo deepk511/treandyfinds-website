@@ -49,6 +49,34 @@ function CheckoutForm() {
   if (!isCartMode && !product) return null
   if (isCartMode && cart.length === 0) return null
 
+  function getOrderItems() {
+    return isCartMode
+      ? cart.map((item) => ({ name: item.name, price: item.price, qty: item.qty }))
+      : [{ name: product.name, price: product.price, qty }]
+  }
+
+  async function sendOrderEmails(paymentMethod) {
+    try {
+      await fetch('/api/send-order-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          customerName: form.name,
+          customerEmail: form.email,
+          customerPhone: form.phone,
+          address: form.address,
+          city: form.city,
+          pincode: form.pincode,
+          items: getOrderItems(),
+          total,
+          paymentMethod,
+        }),
+      })
+    } catch (err) {
+      console.error('Order email failed to send:', err)
+    }
+  }
+
   function validate() {
     const e = {}
     if (!form.name.trim()) e.name = 'Full name is required'
@@ -106,6 +134,7 @@ function CheckoutForm() {
         },
         theme: { color: '#FF6B35' },
         handler: function () {
+          sendOrderEmails('online')
           if (isCartMode) clearCart()
           router.push(
             `/order-success?product=${encodeURIComponent(orderDescription)}&amount=${total}`
@@ -130,6 +159,7 @@ function CheckoutForm() {
   function handleCOD() {
     const errs = validate()
     if (Object.keys(errs).length) { setErrors(errs); return }
+    sendOrderEmails('cod')
     if (isCartMode) clearCart()
     router.push(`/order-success?product=${encodeURIComponent(orderDescription)}&amount=${total}&payment=cod`)
   }
