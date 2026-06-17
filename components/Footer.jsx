@@ -16,7 +16,7 @@ export default function Footer() {
           </div>
 
           <a
-            href="mailto:emmanecomconsultant@gmail.com"
+            href="mailto:treandyfindsindia@gmail.com"
             className="inline-flex items-center gap-2 bg-brand-orange text-white font-semibold px-5 py-2.5 rounded-full w-fit"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -34,7 +34,7 @@ export default function Footer() {
           <Link href="/about" className="text-white/60 hover:text-white transition-colors">About Us</Link>
           <Link href="/return-policy" className="text-white/60 hover:text-white transition-colors">Return & Refund</Link>
           <Link href="/shipping-policy" className="text-white/60 hover:text-white transition-colors">Shipping Policy</Link>
-          <a href="mailto:emmanecomconsultant@gmail.com" className="text-white/60 hover:text-white transition-colors">Contact Us</a>
+          <a href="mailto:treandyfindsindia@gmail.com" className="text-white/60 hover:text-white transition-colors">Contact Us</a>
         </div>
 
         {/* Bottom row */}

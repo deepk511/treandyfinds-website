@@ -56,7 +56,7 @@ export default function ReturnPolicyPage() {
               <li>Record your unboxing video on the day of delivery</li>
               <li>Email us within <strong className="text-brand-dark">3 days of receiving your order</strong></li>
               <li>Include your order details, phone number, and the unboxing video</li>
-              <li>Send to: <a href="mailto:emmanecomconsultant@gmail.com" className="text-brand-orange font-semibold">emmanecomconsultant@gmail.com</a></li>
+              <li>Send to: <a href="mailto:treandyfindsindia@gmail.com" className="text-brand-orange font-semibold">treandyfindsindia@gmail.com</a></li>
             </ol>
             <p className="text-sm text-brand-gray mt-3">
               <strong className="text-brand-dark">Deadline:</strong> Return requests must be submitted within
@@ -93,7 +93,7 @@ export default function ReturnPolicyPage() {
             <div className="mt-3 space-y-1 text-sm">
               <p>
                 <span className="font-semibold text-brand-dark">Email: </span>
-                <a href="mailto:emmanecomconsultant@gmail.com" className="text-brand-orange">emmanecomconsultant@gmail.com</a>
+                <a href="mailto:treandyfindsindia@gmail.com" className="text-brand-orange">treandyfindsindia@gmail.com</a>
               </p>
               <p>
                 <span className="font-semibold text-brand-dark">Phone: </span>

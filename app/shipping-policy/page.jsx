@@ -89,7 +89,7 @@ export default function ShippingPolicyPage() {
             <div className="mt-3 space-y-1 text-sm">
               <p>
                 <span className="font-semibold text-brand-dark">Email: </span>
-                <a href="mailto:emmanecomconsultant@gmail.com" className="text-brand-orange">emmanecomconsultant@gmail.com</a>
+                <a href="mailto:treandyfindsindia@gmail.com" className="text-brand-orange">treandyfindsindia@gmail.com</a>
               </p>
               <p>
                 <span className="font-semibold text-brand-dark">Phone: </span>

@@ -88,8 +88,8 @@ export default function PrivacyPolicyPage() {
               <p><strong>Owner:</strong> Emmanuvel Sasikumar</p>
               <p><strong>Address:</strong> No 10A David Puram, Kilpauk, Chennai — 600 010</p>
               <p><strong>Email:</strong>{' '}
-                <a href="mailto:emmanecomconsultant@gmail.com" className="text-brand-orange">
-                  emmanecomconsultant@gmail.com
+                <a href="mailto:treandyfindsindia@gmail.com" className="text-brand-orange">
+                  treandyfindsindia@gmail.com
                 </a>
               </p>
               <p><strong>WhatsApp:</strong>{' '}

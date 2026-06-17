@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: 'How do I contact you for support?',
-    a: 'You can email us at emmanecomconsultant@gmail.com. We typically respond within a few hours.',
+    a: 'You can email us at treandyfindsindia@gmail.com. We typically respond within a few hours.',
   },
 ]
 

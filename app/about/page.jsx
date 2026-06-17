@@ -50,7 +50,7 @@ export default function AboutPage() {
             </div>
             <div className="flex gap-3">
               <span className="text-brand-orange font-bold w-32 flex-shrink-0">Email</span>
-              <a href="mailto:emmanecomconsultant@gmail.com" className="text-brand-dark hover:text-brand-orange transition-colors break-all">emmanecomconsultant@gmail.com</a>
+              <a href="mailto:treandyfindsindia@gmail.com" className="text-brand-dark hover:text-brand-orange transition-colors break-all">treandyfindsindia@gmail.com</a>
             </div>
           </div>
         </section>
@@ -69,7 +69,7 @@ export default function AboutPage() {
           </div>
           <p className="text-xs text-brand-gray mt-3">
             You can reach us anytime via email at{' '}
-            <a href="mailto:emmanecomconsultant@gmail.com" className="text-brand-orange">emmanecomconsultant@gmail.com</a>{' '}
+            <a href="mailto:treandyfindsindia@gmail.com" className="text-brand-orange">treandyfindsindia@gmail.com</a>{' '}
             and we&apos;ll respond within 24 hours.
           </p>
         </section>
