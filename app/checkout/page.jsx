@@ -55,12 +55,17 @@ function CheckoutForm() {
       : [{ name: product.name, price: product.price, qty }]
   }
 
+  function generateOrderId() {
+    return 'TF' + Date.now().toString(36).toUpperCase()
+  }
+
   async function sendOrderEmails(paymentMethod) {
     try {
       await fetch('/api/send-order-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          orderId: generateOrderId(),
           customerName: form.name,
           customerEmail: form.email,
           customerPhone: form.phone,

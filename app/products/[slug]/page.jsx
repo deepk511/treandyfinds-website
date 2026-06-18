@@ -105,10 +105,21 @@ export default function ProductPage({ params }) {
             {/* Delivery + Return */}
             <div className="flex flex-col gap-2 text-sm">
               <div className="flex items-center gap-2 text-brand-dark">
-                <svg className="w-4 h-4 text-brand-green flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-                <span><strong>In Stock</strong> — Ready to ship</span>
+                {product.stock > 0 ? (
+                  <>
+                    <svg className="w-4 h-4 text-brand-green flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span><strong>In Stock</strong> — Ready to ship</span>
+                  </>
+                ) : (
+                  <>
+                    <svg className="w-4 h-4 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    <span><strong className="text-red-500">Out of Stock</strong> — Check back soon</span>
+                  </>
+                )}
               </div>
               <div className="flex items-center gap-2 text-brand-dark">
                 <svg className="w-4 h-4 text-brand-orange flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">

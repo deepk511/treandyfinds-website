@@ -14,7 +14,7 @@
       "Soft & Durable — Gentle on bottles, tough on stains",
       "Easy to Use — Ergonomic design for better grip & cleaning"
     ],
-    "inStock": true
+    "stock": 30
   },
   {
     "id": "2",
@@ -31,7 +31,7 @@
       "Waterproof & Durable — Protects books from moisture and wear",
       "Adjustable Size — Fits most textbooks and school notebooks"
     ],
-    "inStock": true
+    "stock": 0
   },
   {
     "id": "3",
@@ -48,7 +48,7 @@
       "Travel-Friendly — Compact, lightweight, easy to carry anywhere",
       "Multi-Use — Perfect for balcony, hotel room, or camping"
     ],
-    "inStock": true
+    "stock": 0
   },
   {
     "id": "4",
@@ -65,7 +65,7 @@
       "Premium Desk Decor — Sleek black base with polished chrome ball",
       "Perfect Gift — Unique conversation starter for any desk or shelf"
     ],
-    "inStock": true
+    "stock": 0
   },
   {
     "id": "5",
@@ -82,7 +82,7 @@
       "Holds Real Flowers — Fill with water and add tiny fresh or dried flowers",
       "Adorable Gift — Perfect for home decor lovers and gifting occasions"
     ],
-    "inStock": true
+    "stock": 0
   },
   {
     "id": "6",
@@ -99,7 +99,7 @@
       "Double-Zip Lock Seal — Airtight, keeps moisture and bugs out",
       "Reusable & Washable — Use again and again, eco-friendly choice"
     ],
-    "inStock": true
+    "stock": 0
   },
   {
     "id": "7",
@@ -116,7 +116,7 @@
       "Easy Peel & Stick — Fully removable, no damage to walls or ceiling",
       "Safe for Kids — Non-toxic materials, safe for children's bedrooms"
     ],
-    "inStock": true
+    "stock": 0
   },
   {
     "id": "8",
@@ -133,7 +133,7 @@
       "Spreads Positivity — Brings good luck and positive energy to any space",
       "Multi-Use — Perfect for car dashboard, office desk, or home altar"
     ],
-    "inStock": true
+    "stock": 0
   },
   {
     "id": "9",
@@ -150,7 +150,7 @@
       "Cute & Fun — Unique gift for anime and cartoon lovers of all ages",
       "Keychain Ready — Durable metal ring and clip included"
     ],
-    "inStock": true
+    "stock": 0
   },
   {
     "id": "10",
@@ -167,7 +167,7 @@
       "Multi-Surface Use — Works on glass, mirrors, tiles, and shower doors",
       "Compact & Lightweight — Easy to store in any kitchen or bathroom"
     ],
-    "inStock": true
+    "stock": 0
   },
   {
     "id": "11",
@@ -184,7 +184,7 @@
       "Premium Velvet Lining — Soft cushion keeps jewellery scratch-free",
       "Perfect Gift — Ideal for jhumki and Indian traditional jewellery lovers"
     ],
-    "inStock": true
+    "stock": 0
   },
   {
     "id": "12",
@@ -201,7 +201,7 @@
       "Keeps Food Fresh — Reseal chips, snacks, and food packets easily",
       "Compact & Portable — Pocket-sized, fits in any kitchen drawer"
     ],
-    "inStock": true
+    "stock": 0
   },
   {
     "id": "13",
@@ -218,7 +218,7 @@
       "USB-C Rechargeable — No gas or refills needed, charges like your phone",
       "Safety Lock — Child-safe button lock for secure storage"
     ],
-    "inStock": true
+    "stock": 0
   },
   {
     "id": "14",
@@ -235,7 +235,7 @@
       "Fine Mesh — Keeps mosquitoes, flies, and all insects completely out",
       "Washable & Reusable — Remove, clean, and reattach whenever needed"
     ],
-    "inStock": true
+    "stock": 0
   },
   {
     "id": "15",
@@ -252,6 +252,6 @@
       "Easy Installation — Full adhesive hook & loop tape frame, zero drilling",
       "Hands-Free Entry — Walk through freely while mosquitoes stay completely out"
     ],
-    "inStock": true
+    "stock": 0
   }
 ]

@@ -6,6 +6,7 @@ import { useCart } from '@/context/CartContext'
 export default function ProductCard({ product }) {
   const discount = Math.round(((product.mrp - product.price) / product.mrp) * 100)
   const { addToCart } = useCart()
+  const outOfStock = product.stock <= 0
 
   return (
     <div className="bg-white rounded-xl border border-brand-border shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden flex flex-col">
@@ -16,16 +17,22 @@ export default function ProductCard({ product }) {
           alt={product.name}
           fill
           sizes="(max-width: 768px) 50vw, 25vw"
-          className="object-cover hover:scale-105 transition-transform duration-300"
+          className={`object-cover hover:scale-105 transition-transform duration-300 ${outOfStock ? 'opacity-50' : ''}`}
         />
-        {product.badge && (
+        {product.badge && !outOfStock && (
           <span className="absolute top-2 left-2 bg-brand-orange text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
             {product.badge}
           </span>
         )}
-        <span className="absolute top-2 right-2 bg-brand-green text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
-          {discount}% OFF
-        </span>
+        {outOfStock ? (
+          <span className="absolute top-2 right-2 bg-brand-dark text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+            OUT OF STOCK
+          </span>
+        ) : (
+          <span className="absolute top-2 right-2 bg-brand-green text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+            {discount}% OFF
+          </span>
+        )}
       </Link>
 
       {/* Info */}
@@ -42,18 +49,29 @@ export default function ProductCard({ product }) {
         </div>
 
         <div className="mt-auto flex flex-col gap-1.5">
-          <button
-            onClick={() => addToCart(product)}
-            className="w-full text-center border-2 border-brand-orange text-brand-orange text-sm font-semibold py-2 rounded-lg active:scale-95 transition-transform"
-          >
-            Add to Cart
-          </button>
-          <Link
-            href={`/products/${product.slug}`}
-            className="w-full text-center bg-brand-orange text-white text-sm font-semibold py-2 rounded-lg active:scale-95 transition-transform"
-          >
-            Buy Now
-          </Link>
+          {outOfStock ? (
+            <button
+              disabled
+              className="w-full text-center bg-gray-200 text-gray-500 text-sm font-semibold py-2 rounded-lg cursor-not-allowed"
+            >
+              Out of Stock
+            </button>
+          ) : (
+            <>
+              <button
+                onClick={() => addToCart(product)}
+                className="w-full text-center border-2 border-brand-orange text-brand-orange text-sm font-semibold py-2 rounded-lg active:scale-95 transition-transform"
+              >
+                Add to Cart
+              </button>
+              <Link
+                href={`/products/${product.slug}`}
+                className="w-full text-center bg-brand-orange text-white text-sm font-semibold py-2 rounded-lg active:scale-95 transition-transform"
+              >
+                Buy Now
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>

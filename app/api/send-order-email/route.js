@@ -3,11 +3,13 @@ import { Resend } from 'resend'
 const resend = new Resend(process.env.RESEND_API_KEY)
 const FROM = 'Treandyfinds India <orders@treandyfindsindia.com>'
 const OWNER_EMAIL = process.env.OWNER_EMAIL
+const SITE_URL = 'https://treandyfindsindia.com'
 
 export async function POST(request) {
   try {
     const body = await request.json()
     const {
+      orderId,
       customerName,
       customerEmail,
       customerPhone,
@@ -22,6 +24,18 @@ export async function POST(request) {
     if (!customerEmail || !items || !total) {
       return Response.json({ error: 'Missing required order fields' }, { status: 400 })
     }
+
+    const labelUrl = `${SITE_URL}/print-label?${new URLSearchParams({
+      orderId: orderId || '',
+      name: customerName,
+      phone: customerPhone,
+      address,
+      city,
+      pincode,
+      total,
+      paymentMethod,
+      items: JSON.stringify(items),
+    })}`
 
     const itemsHtml = items
       .map(
@@ -54,6 +68,7 @@ export async function POST(request) {
     const ownerHtml = `
       <div style="font-family:Arial,sans-serif;max-width:480px;margin:0 auto;">
         <h2 style="color:#FF6B35;">🛒 New Order Received — ₹${total}</h2>
+        <p style="color:#666;font-size:13px;">Order ID: <strong>${orderId || '—'}</strong></p>
         <table style="width:100%;border-collapse:collapse;margin:16px 0;">
           ${itemsHtml}
           <tr><td style="padding-top:12px;border-top:1px solid #eee;font-weight:bold;">Total</td>
@@ -64,6 +79,9 @@ export async function POST(request) {
            <strong>Phone:</strong> ${customerPhone}<br/>
            <strong>Email:</strong> ${customerEmail}</p>
         <p><strong>Delivery Address:</strong><br/>${address}, ${city} - ${pincode}</p>
+        <a href="${labelUrl}" style="display:inline-block;background:#FF6B35;color:#fff;font-weight:bold;padding:12px 20px;border-radius:8px;text-decoration:none;margin-top:12px;">
+          🖨️ Print Shipping Label
+        </a>
       </div>
     `
 
