@@ -138,8 +138,8 @@ function CheckoutForm() {
           address: `${form.address}, ${form.city} - ${form.pincode}`,
         },
         theme: { color: '#FF6B35' },
-        handler: function () {
-          sendOrderEmails('online')
+        handler: async function () {
+          await sendOrderEmails('online')
           if (isCartMode) clearCart()
           router.push(
             `/order-success?product=${encodeURIComponent(orderDescription)}&amount=${total}`
@@ -161,10 +161,10 @@ function CheckoutForm() {
     }
   }
 
-  function handleCOD() {
+  async function handleCOD() {
     const errs = validate()
     if (Object.keys(errs).length) { setErrors(errs); return }
-    sendOrderEmails('cod')
+    await sendOrderEmails('cod')
     if (isCartMode) clearCart()
     router.push(`/order-success?product=${encodeURIComponent(orderDescription)}&amount=${total}&payment=cod`)
   }
