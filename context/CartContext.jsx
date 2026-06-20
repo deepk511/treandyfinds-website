@@ -27,6 +27,16 @@ export function CartProvider({ children }) {
       localStorage.setItem('treandyfinds_cart', JSON.stringify(updated))
       return updated
     })
+
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'AddToCart', {
+        content_name: product.name,
+        content_ids: [product.slug],
+        content_type: 'product',
+        value: product.price * qty,
+        currency: 'INR',
+      })
+    }
   }
 
   function updateQty(slug, qty) {

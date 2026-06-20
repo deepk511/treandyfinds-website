@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import QuantityBuyButton from '@/components/QuantityBuyButton'
 import ProductGallery from '@/components/ProductGallery'
+import MetaPixelViewContent from '@/components/MetaPixelViewContent'
 import { getProductImages } from '@/lib/productImages'
 import products from '@/data/products.json'
 import reviews from '@/data/reviews.json'
@@ -43,6 +44,7 @@ export default function ProductPage({ params }) {
 
   return (
     <>
+      <MetaPixelViewContent product={product} />
       <Navbar />
       <main className="max-w-4xl mx-auto px-4 py-6 md:py-10">
         {/* Back */}

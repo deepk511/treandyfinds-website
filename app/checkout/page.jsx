@@ -46,6 +46,13 @@ function CheckoutForm() {
     if (isCartMode && cart.length === 0) router.replace('/cart')
   }, [product, isCartMode, cart, router])
 
+  useEffect(() => {
+    if (((!isCartMode && product) || (isCartMode && cart.length > 0)) && typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'InitiateCheckout', { value: total, currency: 'INR' })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   if (!isCartMode && !product) return null
   if (isCartMode && cart.length === 0) return null
 
@@ -140,6 +147,9 @@ function CheckoutForm() {
         theme: { color: '#FF6B35' },
         handler: async function () {
           await sendOrderEmails('online')
+          if (typeof window !== 'undefined' && window.fbq) {
+            window.fbq('track', 'Purchase', { value: total, currency: 'INR' })
+          }
           if (isCartMode) clearCart()
           router.push(
             `/order-success?product=${encodeURIComponent(orderDescription)}&amount=${total}`
@@ -165,6 +175,9 @@ function CheckoutForm() {
     const errs = validate()
     if (Object.keys(errs).length) { setErrors(errs); return }
     await sendOrderEmails('cod')
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'Purchase', { value: total, currency: 'INR' })
+    }
     if (isCartMode) clearCart()
     router.push(`/order-success?product=${encodeURIComponent(orderDescription)}&amount=${total}&payment=cod`)
   }
