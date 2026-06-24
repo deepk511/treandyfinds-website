@@ -69,6 +69,7 @@ function LabelContent() {
             <p className="text-sm text-brand-dark">No 10A, David Puram, Kilpauk</p>
             <p className="text-sm text-brand-dark">Chennai — 600 010, Tamil Nadu</p>
             <p className="text-sm text-brand-dark">Phone: +91 99401 03738</p>
+            <p className="text-sm text-brand-dark mt-1">Speed Post A/C No: TN/SP-ADV/161/CCN/2025-26</p>
           </div>
 
           <div className="border-2 border-black p-3 rounded">
